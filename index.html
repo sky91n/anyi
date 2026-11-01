@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2ede2">
+  <meta name="description" content="ANYI 色域导航，用调色板切换你的云端收藏。">
+  <meta property="og:title" content="ANYI · 色域导航">
+  <meta property="og:description" content="切换颜色，让四个云端入口呈现不同的情绪。">
+  <meta property="og:type" content="website">
+  <title>ANYI · 色域导航</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-palette="citrus">
+  <canvas id="paint" aria-hidden="true"></canvas>
+  <div class="paper-noise" aria-hidden="true"></div>
+  <div class="page-grid" aria-hidden="true"></div>
+
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="ANYI 首页">
+        <span class="brand-disc" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+        <span class="brand-type">
+          <strong>ANYI</strong>
+          <small>COLOR LIBRARY</small>
+        </span>
+      </a>
+
+      <div class="theme-control" aria-label="调色板">
+        <div class="theme-current">
+          <span>当前色域</span>
+          <strong id="themeName">杏橙</strong>
+          <small id="themeCode">CITRUS</small>
+        </div>
+        <div class="swatches" role="radiogroup" aria-label="选择页面配色">
+          <button class="swatch swatch-citrus" type="button" data-theme="citrus" role="radio" aria-checked="true" aria-label="杏橙调色板" title="杏橙 · 1">
+            <span></span>
+          </button>
+          <button class="swatch swatch-tide" type="button" data-theme="tide" role="radio" aria-checked="false" aria-label="潮汐调色板" title="潮汐 · 2">
+            <span></span>
+          </button>
+          <button class="swatch swatch-iris" type="button" data-theme="iris" role="radio" aria-checked="false" aria-label="鸢尾调色板" title="鸢尾 · 3">
+            <span></span>
+          </button>
+          <button class="swatch swatch-moss" type="button" data-theme="moss" role="radio" aria-checked="false" aria-label="苔原调色板" title="苔原 · 4">
+            <span></span>
+          </button>
+          <button class="swatch swatch-night" type="button" data-theme="night" role="radio" aria-checked="false" aria-label="午夜调色板" title="午夜 · 5">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="intro" aria-labelledby="hero-title">
+        <div class="issue-line">
+          <span>VOL. 01</span>
+          <span class="issue-rule"></span>
+          <span>2026</span>
+        </div>
+        <h1 id="hero-title" aria-label="ANYI">AN<span>Y</span>I</h1>
+        <p class="claim">把喜欢，<br>收进同一片颜色里。</p>
+        <p class="intro-copy">一处安静、轻盈的云端索引。<br>选择你的色域，然后继续向前。</p>
+
+        <div class="color-readout" aria-hidden="true">
+          <span id="readoutCode">01 / CITRUS</span>
+          <div class="readout-track"><i id="readoutBar"></i></div>
+        </div>
+      </section>
+
+      <section class="link-section" aria-labelledby="links-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">SAVED LINKS</p>
+            <h2 id="links-title">云端收藏</h2>
+          </div>
+          <span class="count">04</span>
+        </div>
+
+        <nav class="link-list" aria-label="云盘快捷入口">
+          <a class="link-card" href="https://drive.uc.cn/s/4c49912c461a4?public=1" target="_blank" rel="noopener noreferrer">
+            <span class="link-no">01</span>
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <path d="M22.5 16.2a8.2 8.2 0 1 1-2.8-6.5"/>
+                <path d="M19.3 4.8v6h-6M9.8 14h8.4"/>
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>UC 网盘</strong>
+              <small>极速云端 · 分享直达</small>
+            </span>
+            <span class="link-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M8 5h11v11"/></svg>
+            </span>
+          </a>
+
+          <a class="link-card" href="https://www.guangyapan.com/s/1964040053614407737_arkzFWMgZ9YxZqpC" target="_blank" rel="noopener noreferrer">
+            <span class="link-no">02</span>
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <path d="m14 3 2.4 7.6L24 13l-7.6 2.4L14 23l-2.4-7.6L4 13l7.6-2.4L14 3Z"/>
+                <path d="m21.5 20 .9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9.9-2.1Z"/>
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>光鸭云盘</strong>
+              <small>星光盘 · 快速打开</small>
+            </span>
+            <span class="link-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M8 5h11v11"/></svg>
+            </span>
+          </a>
+
+          <a class="link-card" href="https://pan.quark.cn/s/42055d275aef" target="_blank" rel="noopener noreferrer">
+            <span class="link-no">03</span>
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="7.8"/>
+                <ellipse cx="14" cy="14" rx="12" ry="4.6" transform="rotate(-28 14 14)"/>
+                <circle cx="21.8" cy="7.8" r="2"/>
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>夸克网盘</strong>
+              <small>极速转存 · 在线预览</small>
+            </span>
+            <span class="link-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M8 5h11v11"/></svg>
+            </span>
+          </a>
+
+          <a class="link-card" href="https://yun.139.com/shareweb/#/w/i/2yA8zNVFH27hf" target="_blank" rel="noopener noreferrer">
+            <span class="link-no">04</span>
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <path d="M7.7 20h13.2a4.6 4.6 0 0 0 .5-9.2 7.2 7.2 0 0 0-13.6-.2A5.2 5.2 0 0 0 7.7 20Z"/>
+                <rect x="11" y="15" width="6" height="9" rx="1.7"/>
+                <path d="M13 21.2h2"/>
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>移动云盘</strong>
+              <small>中国移动 · 分享页</small>
+            </span>
+            <span class="link-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M8 5h11v11"/></svg>
+            </span>
+          </a>
+        </nav>
+
+        <p class="interaction-hint">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span class="fine-hint">移动鼠标混色 · 点击留下墨迹 · 数字键 1–5 切换</span>
+          <span class="touch-hint">滑动混色 · 轻触留下墨迹</span>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>ANYI / 色域导航</span>
+      <span class="footer-center" aria-hidden="true">COLOR IS A PLACE</span>
+      <span>DESIGNED FOR THE CLOUD</span>
+    </footer>
+  </div>
+
+  <div class="sr-only" id="themeAnnouncement" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
